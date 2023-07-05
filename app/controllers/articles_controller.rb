@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
 
   http_basic_authenticate_with name: "dhh", password: "secret",
                                except: [:index, :show]
+
   def index
     @articles = Article.all
   end
@@ -15,9 +16,9 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = Articles::Create.call(article_params)
 
-    if @article.save
+    if @article
       redirect_to @article
     else
       render :new, status: :unprocessable_entity
@@ -29,11 +30,12 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    @article = Article.find(params[:id])
+    @article = Articles::Update.call(params[:id], article_params)
 
-    if @article.update(article_params)
+    if @article
       redirect_to @article
     else
+      # flash.now[:error] = "Could not update an article!"
       render :edit, status: :unprocessable_entity
     end
   end
