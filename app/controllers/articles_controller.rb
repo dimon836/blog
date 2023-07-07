@@ -17,11 +17,10 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Articles::Create.call(article_params)
-
-    if @article
-      redirect_to @article
-    else
+    if @article.errors.any?
       render :new, status: :unprocessable_entity
+    else
+      redirect_to @article
     end
   end
 
