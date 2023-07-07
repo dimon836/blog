@@ -34,7 +34,6 @@ class ArticlesController < ApplicationController
     if @article
       redirect_to @article
     else
-      # flash.now[:error] = "Could not update an article!"
       render :edit, status: :unprocessable_entity
     end
   end
