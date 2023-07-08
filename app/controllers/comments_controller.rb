@@ -5,15 +5,15 @@ class CommentsController < ApplicationController
   def create
     @comment = Comments::Create.call(comment_params)
     if @comment.errors.any?
-      render @article, status: :unprocessable_entity
+      render Article.find(comment_params[:article_id]), status: :unprocessable_entity
     else
       redirect_to @comment.article
     end
   end
 
   def destroy
-    @article = Comments::Destroy.call(params[:article_id], params[:id])
-    redirect_to article_path(@article), status: :see_other
+    Comments::Destroy.call(params[:article_id], params[:id])
+    redirect_to article_path(Article.find(params[:article_id])), status: :see_other
   end
 
   private

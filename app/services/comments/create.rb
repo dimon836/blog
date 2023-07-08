@@ -16,9 +16,5 @@ module Comments
     def initialize(params)
       @params = params
     end
-
-    def article
-      @article ||= Article.find(params[:article_id])
-    end
   end
 end

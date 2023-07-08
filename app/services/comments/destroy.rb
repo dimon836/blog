@@ -5,9 +5,7 @@ module Comments
     end
 
     def call
-      @comment = article.comments.find(comment_id)
-      @comment.destroy
-      @article
+      Comment.find_by(article_id: article_id, id: comment_id).destroy
     end
 
     attr_reader :article_id, :comment_id
@@ -17,10 +15,6 @@ module Comments
     def initialize(article_id, comment_id)
       @article_id = article_id
       @comment_id = comment_id
-    end
-
-    def article
-      @article ||= Article.find(article_id)
     end
 
   end
