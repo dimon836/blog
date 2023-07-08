@@ -18,6 +18,5 @@ module Articles
       @params = params
     end
 
-
   end
 end

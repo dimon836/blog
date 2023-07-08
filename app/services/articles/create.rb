@@ -16,5 +16,6 @@ module Articles
     def initialize(params)
       @params = params
     end
+
   end
 end
