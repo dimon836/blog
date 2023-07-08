@@ -1,27 +1,23 @@
 module Articles
   class Update
 
-    def self.call(id, params)
-      new(id, params).call
+    def self.call(article, params)
+      new(article, params).call
     end
 
     def call
       article.update(params)
-      article
     end
 
-    attr_reader :id, :params
+    attr_reader :article, :params
 
     private
 
-    def initialize(id, params)
-      @id = id
+    def initialize(article, params)
+      @article = article
       @params = params
     end
 
-    def article
-      @article ||= Article.find(id)
-    end
 
   end
 end

@@ -29,9 +29,9 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    @article = Articles::Update.call(params[:id], article_params)
+    @article = Article.find(params[:id])
 
-    if @article
+    if Articles::Update.call(@article, article_params)
       redirect_to @article
     else
       render :edit, status: :unprocessable_entity
