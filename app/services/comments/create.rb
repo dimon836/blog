@@ -6,7 +6,7 @@ module Comments
     end
 
     def call
-      [article, article.comments.build(params)]
+      article.comments.build(params)
     end
 
     attr_reader :article_id, :params

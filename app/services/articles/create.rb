@@ -6,8 +6,7 @@ module Articles
     end
 
     def call
-      article.save
-      article
+      Article.create(params)
     end
 
     attr_reader :params
@@ -17,10 +16,5 @@ module Articles
     def initialize(params)
       @params = params
     end
-
-    def article
-      @article ||= Article.new(params)
-    end
   end
-
 end
