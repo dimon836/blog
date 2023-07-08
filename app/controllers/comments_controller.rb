@@ -3,9 +3,9 @@ class CommentsController < ApplicationController
   http_basic_authenticate_with name: "dhh", password: "secret"
 
   def create
-    @article, @comment = Comments::Create.call(params[:article_id], comment_params)
+    @comment = Comments::Create.call(comment_params)
     if @comment.save
-      redirect_to @article
+      redirect_to @comment.article
     else
       render @article, status: :unprocessable_entity
     end
@@ -19,6 +19,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:id, :commenter, :body, :status)
+    params.require(:comment).permit(:commenter, :body, :status).merge(article_id: params[:article_id])
   end
 end
