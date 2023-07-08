@@ -4,10 +4,10 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comments::Create.call(comment_params)
-    if @comment.save
-      redirect_to @comment.article
-    else
+    if @comment.errors.any?
       render @article, status: :unprocessable_entity
+    else
+      redirect_to @comment.article
     end
   end
 
