@@ -6,7 +6,7 @@ module Comments
     end
 
     def call
-      article.comments.create(params)
+      Comment.create(params)
     end
 
     attr_reader :params
