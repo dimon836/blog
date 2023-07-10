@@ -18,4 +18,3 @@ RSpec.configure do |config|
     raise e
   end
 end
-
