@@ -1,4 +1,4 @@
-<%= simple_form_for @article do |form| %>
+<%= form_with model: @article do |form| %>
   <% invalid = @article.errors.include?(:title) %>
   <div>
     <%= form.label :title %><br>
@@ -23,8 +23,10 @@
       </div>
     <% end %>
   </div>
+
   <div>
-    <%= form.input :status, :collection => %w[public private archived], selected: 'public' %>
+    <%= form.label :status %><br>
+    <%= form.select :status, %w[public private archived], selected: 'public' %>
   </div>
 
   <div>
