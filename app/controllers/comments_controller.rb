@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
 
   def destroy
     Comments::Destroy.call(params[:article_id], params[:id])
-    redirect_to article_path(Article.find(params[:article_id])), status: :see_other
+    redirect_to article_path(params[:article_id]), status: :see_other
   end
 
   private
