@@ -1077,6 +1077,44 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
+      <library name="shoulda-matchers (vbundled(5.3.0)) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="4" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/shoulda-matchers-5.3.0/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/shoulda-matchers-5.3.0/docs" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/shoulda-matchers-5.3.0/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/shoulda-matchers-5.3.0/docs" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/shoulda-matchers-5.3.0/docs" />
+        </excluded>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="simple_form (vbundled(5.2.0)) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="4" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/simple_form-5.2.0/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/simple_form-5.2.0/test" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/simple_form-5.2.0/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/simple_form-5.2.0/test" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/simple_form-5.2.0/test" />
+        </excluded>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
       <library name="sprockets (vbundled(4.2.0)) [path][gem]" type="rubylib">
         <properties>
           <option name="version" value="4" />
@@ -1339,14 +1377,23 @@
         <option value="resource" />
         <option value="scaffold" />
         <option value="scaffold_controller" />
+        <option value="simple_form:install" />
         <option value="stimulus" />
         <option value="system_test" />
         <option value="task" />
         <option value="test_unit:channel" />
+        <option value="test_unit:controller" />
         <option value="test_unit:generator" />
+        <option value="test_unit:helper" />
         <option value="test_unit:install" />
+        <option value="test_unit:integration" />
+        <option value="test_unit:job" />
         <option value="test_unit:mailbox" />
+        <option value="test_unit:mailer" />
+        <option value="test_unit:model" />
         <option value="test_unit:plugin" />
+        <option value="test_unit:scaffold" />
+        <option value="test_unit:system" />
       </list>
     </option>
     <option name="myGenerators">
@@ -1369,14 +1416,23 @@
         <option value="resource" />
         <option value="scaffold" />
         <option value="scaffold_controller" />
+        <option value="simple_form:install" />
         <option value="stimulus" />
         <option value="system_test" />
         <option value="task" />
         <option value="test_unit:channel" />
+        <option value="test_unit:controller" />
         <option value="test_unit:generator" />
+        <option value="test_unit:helper" />
         <option value="test_unit:install" />
+        <option value="test_unit:integration" />
+        <option value="test_unit:job" />
         <option value="test_unit:mailbox" />
+        <option value="test_unit:mailer" />
+        <option value="test_unit:model" />
         <option value="test_unit:plugin" />
+        <option value="test_unit:scaffold" />
+        <option value="test_unit:system" />
       </list>
     </option>
   </component>
@@ -1570,6 +1626,14 @@
           <RakeTaskImpl description="Prints out your Rack middleware stack" fullCommand="middleware" id="middleware" />
           <RakeTaskImpl description="Restart app by touching tmp/restart.txt" fullCommand="restart" id="restart" />
           <RakeTaskImpl description="Generate a cryptographically secure secret key (this is typically used to generate a secret for cookie sessions)" fullCommand="secret" id="secret" />
+          <RakeTaskImpl description="Run all specs in spec directory (excluding plugin specs)" fullCommand="spec" id="spec" />
+          <RakeTaskImpl id="spec">
+            <subtasks>
+              <RakeTaskImpl description="Run the code examples in spec/models" fullCommand="spec:models" id="models" />
+              <RakeTaskImpl description="" fullCommand="spec:prepare" id="prepare" />
+              <RakeTaskImpl description="" fullCommand="spec:statsetup" id="statsetup" />
+            </subtasks>
+          </RakeTaskImpl>
           <RakeTaskImpl description="Report code statistics (KLOCs, etc) from the application or engine" fullCommand="stats" id="stats" />
           <RakeTaskImpl id="stimulus">
             <subtasks>
