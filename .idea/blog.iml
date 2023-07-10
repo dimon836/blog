@@ -352,70 +352,6 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="database_cleaner (vbundled(2.0.2)) [path][gem]" type="rubylib">
-        <properties>
-          <option name="version" value="4" />
-        </properties>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/database_cleaner-2.0.2/lib" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/database_cleaner-2.0.2/lib" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="database_cleaner-active_record (vbundled(2.1.0)) [path][gem]" type="rubylib">
-        <properties>
-          <option name="version" value="4" />
-        </properties>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/database_cleaner-active_record-2.1.0/bin" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/database_cleaner-active_record-2.1.0/lib" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/database_cleaner-active_record-2.1.0/tmp" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/database_cleaner-active_record-2.1.0/.github" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/database_cleaner-active_record-2.1.0/gemfiles" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/database_cleaner-active_record-2.1.0/bin" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/database_cleaner-active_record-2.1.0/lib" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/database_cleaner-active_record-2.1.0/tmp" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/database_cleaner-active_record-2.1.0/.github" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/database_cleaner-active_record-2.1.0/gemfiles" />
-        </SOURCES>
-        <excluded>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/database_cleaner-active_record-2.1.0/bin" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/database_cleaner-active_record-2.1.0/tmp" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/database_cleaner-active_record-2.1.0/.github" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/database_cleaner-active_record-2.1.0/gemfiles" />
-        </excluded>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="database_cleaner-core (vbundled(2.0.1)) [path][gem]" type="rubylib">
-        <properties>
-          <option name="version" value="4" />
-        </properties>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/database_cleaner-core-2.0.1/bin" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/database_cleaner-core-2.0.1/lib" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/database_cleaner-core-2.0.1/tmp" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/database_cleaner-core-2.0.1/bin" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/database_cleaner-core-2.0.1/lib" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/database_cleaner-core-2.0.1/tmp" />
-        </SOURCES>
-        <excluded>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/database_cleaner-core-2.0.1/bin" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/database_cleaner-core-2.0.1/tmp" />
-        </excluded>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
       <library name="debug (vbundled(1.8.0)) [path][gem]" type="rubylib">
         <properties>
           <option name="version" value="4" />
@@ -441,31 +377,6 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="diff-lcs (vbundled(1.5.0)) [path][gem]" type="rubylib">
-        <properties>
-          <option name="version" value="4" />
-        </properties>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/diff-lcs-1.5.0/bin" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/diff-lcs-1.5.0/lib" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/diff-lcs-1.5.0/docs" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/diff-lcs-1.5.0/spec" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/diff-lcs-1.5.0/bin" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/diff-lcs-1.5.0/lib" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/diff-lcs-1.5.0/docs" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/diff-lcs-1.5.0/spec" />
-        </SOURCES>
-        <excluded>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/diff-lcs-1.5.0/bin" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/diff-lcs-1.5.0/docs" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/diff-lcs-1.5.0/spec" />
-        </excluded>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
       <library name="erubi (vbundled(1.12.0)) [path][gem]" type="rubylib">
         <properties>
           <option name="version" value="4" />
@@ -477,53 +388,6 @@
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/erubi-1.12.0/lib" />
         </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="factory_bot (vbundled(6.2.1)) [path][gem]" type="rubylib">
-        <properties>
-          <option name="version" value="4" />
-        </properties>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/factory_bot-6.2.1/lib" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/factory_bot-6.2.1/lib" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="factory_bot_rails (vbundled(6.2.0)) [path][gem]" type="rubylib">
-        <properties>
-          <option name="version" value="4" />
-        </properties>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/factory_bot_rails-6.2.0/lib" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/factory_bot_rails-6.2.0/lib" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="faker (vbundled(3.2.0)) [path][gem]" type="rubylib">
-        <properties>
-          <option name="version" value="4" />
-        </properties>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/faker-3.2.0/bin" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/faker-3.2.0/lib" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/faker-3.2.0/bin" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/faker-3.2.0/lib" />
-        </SOURCES>
-        <excluded>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/faker-3.2.0/bin" />
-        </excluded>
       </library>
     </orderEntry>
     <orderEntry type="module-library">
@@ -1175,81 +1039,6 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="rspec-core (vbundled(3.12.2)) [path][gem]" type="rubylib">
-        <properties>
-          <option name="version" value="4" />
-        </properties>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rspec-core-3.12.2/exe" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rspec-core-3.12.2/lib" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rspec-core-3.12.2/exe" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rspec-core-3.12.2/lib" />
-        </SOURCES>
-        <excluded>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rspec-core-3.12.2/exe" />
-        </excluded>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="rspec-expectations (vbundled(3.12.3)) [path][gem]" type="rubylib">
-        <properties>
-          <option name="version" value="4" />
-        </properties>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rspec-expectations-3.12.3/lib" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rspec-expectations-3.12.3/lib" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="rspec-mocks (vbundled(3.12.5)) [path][gem]" type="rubylib">
-        <properties>
-          <option name="version" value="4" />
-        </properties>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rspec-mocks-3.12.5/lib" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rspec-mocks-3.12.5/lib" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="rspec-rails (vbundled(6.0.3)) [path][gem]" type="rubylib">
-        <properties>
-          <option name="version" value="4" />
-        </properties>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rspec-rails-6.0.3/lib" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rspec-rails-6.0.3/lib" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="rspec-support (vbundled(3.12.1)) [path][gem]" type="rubylib">
-        <properties>
-          <option name="version" value="4" />
-        </properties>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rspec-support-3.12.1/lib" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/rspec-support-3.12.1/lib" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
       <library name="rubyzip (vbundled(2.3.2)) [path][gem]" type="rubylib">
         <properties>
           <option name="version" value="4" />
@@ -1284,25 +1073,6 @@
         </SOURCES>
         <excluded>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/selenium-webdriver-4.10.0/bin" />
-        </excluded>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="shoulda-matchers (vbundled(5.3.0)) [path][gem]" type="rubylib">
-        <properties>
-          <option name="version" value="4" />
-        </properties>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/shoulda-matchers-5.3.0/lib" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/shoulda-matchers-5.3.0/docs" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/shoulda-matchers-5.3.0/lib" />
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/shoulda-matchers-5.3.0/docs" />
-        </SOURCES>
-        <excluded>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/3.2.0/gems/shoulda-matchers-5.3.0/docs" />
         </excluded>
       </library>
     </orderEntry>
@@ -1557,7 +1327,6 @@
         <option value="benchmark" />
         <option value="channel" />
         <option value="controller" />
-        <option value="factory_bot:model" />
         <option value="generator" />
         <option value="helper" />
         <option value="integration_test" />
@@ -1568,21 +1337,6 @@
         <option value="migration" />
         <option value="model" />
         <option value="resource" />
-        <option value="rspec:channel" />
-        <option value="rspec:controller" />
-        <option value="rspec:feature" />
-        <option value="rspec:generator" />
-        <option value="rspec:helper" />
-        <option value="rspec:install" />
-        <option value="rspec:integration" />
-        <option value="rspec:job" />
-        <option value="rspec:mailbox" />
-        <option value="rspec:mailer" />
-        <option value="rspec:model" />
-        <option value="rspec:request" />
-        <option value="rspec:scaffold" />
-        <option value="rspec:system" />
-        <option value="rspec:view" />
         <option value="scaffold" />
         <option value="scaffold_controller" />
         <option value="stimulus" />
@@ -1603,7 +1357,6 @@
         <option value="benchmark" />
         <option value="channel" />
         <option value="controller" />
-        <option value="factory_bot:model" />
         <option value="generator" />
         <option value="helper" />
         <option value="integration_test" />
@@ -1614,21 +1367,6 @@
         <option value="migration" />
         <option value="model" />
         <option value="resource" />
-        <option value="rspec:channel" />
-        <option value="rspec:controller" />
-        <option value="rspec:feature" />
-        <option value="rspec:generator" />
-        <option value="rspec:helper" />
-        <option value="rspec:install" />
-        <option value="rspec:integration" />
-        <option value="rspec:job" />
-        <option value="rspec:mailbox" />
-        <option value="rspec:mailer" />
-        <option value="rspec:model" />
-        <option value="rspec:request" />
-        <option value="rspec:scaffold" />
-        <option value="rspec:system" />
-        <option value="rspec:view" />
         <option value="scaffold" />
         <option value="scaffold_controller" />
         <option value="stimulus" />
