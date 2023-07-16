@@ -16,4 +16,14 @@ RSpec.describe Comment, :type => :model do
   describe "Associations" do
     it { is_expected.to belong_to(:article) }
   end
+
+  describe "#admin?" do
+    it "determines if the commenter is admin" do
+      %w[ADMIN admin ADMINISTRATOR].each do |commenter|
+        comment.commenter = commenter
+        expect(comment).to be_admin
+      end
+    end
+  end
+
 end
