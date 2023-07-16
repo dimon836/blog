@@ -102,6 +102,9 @@ GEM
       railties (>= 5.0.0)
     faker (3.2.0)
       i18n (>= 1.8.11, < 2)
+    fuubar (2.5.1)
+      rspec-core (~> 3.0)
+      ruby-progressbar (~> 1.4)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.14.1)
@@ -198,6 +201,7 @@ GEM
       rspec-mocks (~> 3.12)
       rspec-support (~> 3.12)
     rspec-support (3.12.1)
+    ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
     selenium-webdriver (4.10.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -252,6 +256,7 @@ DEPENDENCIES
   debug
   factory_bot_rails (~> 6.2)
   faker
+  fuubar
   importmap-rails
   jbuilder
   pg (~> 1.5.3)
