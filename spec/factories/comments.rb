@@ -3,7 +3,7 @@ FactoryBot.define do
     commenter { Faker::Name.name }
     body { Faker::Lorem.sentence }
 
-    association :article
+    article
 
     transient do
       status { :public }
