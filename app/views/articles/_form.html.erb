@@ -23,11 +23,13 @@
       </div>
     <% end %>
   </div>
+
   <div>
-    <%= form.input :status, :collection => %w[public private archived], selected: 'public' %>
+    <%= form.label :status %><br>
+    <%= form.select :status, %w[public private archived], selected: 'public' %>
   </div>
 
   <div>
-    <%= form.submit "Submit"%>
+    <%= form.submit %>
   </div>
 <% end %>

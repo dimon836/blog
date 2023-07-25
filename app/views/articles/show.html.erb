@@ -1,5 +1,9 @@
 <h1><%= @article.title %></h1>
 
+<div>
+  <%= render 'messages' %>
+</div>
+
 <p><%= @article.body %></p>
 
 <ul>
@@ -15,4 +19,6 @@
 
 <h2>Add a comment:</h2>
 <%= render 'comments/form' %>
+
+<%= link_to 'Back to articles', articles_path %>
 
