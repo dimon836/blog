@@ -1,17 +1,26 @@
 <%= form_with model: @article do |form| %>
+  <% invalid = @article.errors.include?(:title) %>
   <div>
     <%= form.label :title %><br>
-    <%= form.text_field :title %>
-    <% @article.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
+    <%= form.text_field :title%>
+    <% if invalid %>
+      <div>
+        <% @article.errors.full_messages_for(:title).each do |error_message| %>
+          <%= error_message %>.
+        <% end %>
+      </div>
     <% end %>
   </div>
-
+  <% invalid = @article.errors.include?(:body) %>
   <div>
     <%= form.label :body %><br>
-    <%= form.text_area :body %><br>
-    <% @article.errors.full_messages_for(:body).each do |message| %>
-      <div><%= message %></div>
+    <%= form.text_area :body%><br>
+    <% if invalid %>
+      <div>
+        <% @article.errors.full_messages_for(:body).each do |error_message| %>
+          <%= error_message %>.
+        <% end %>
+      </div>
     <% end %>
   </div>
 
@@ -21,6 +30,6 @@
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Submit"%>
   </div>
 <% end %>
