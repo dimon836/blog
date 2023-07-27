@@ -1,17 +1,12 @@
-<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+<%= simple_form_for [@article, @article.comments.build] do |form| %>
   <div>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
+    <%= form.input :commenter %>
   </div>
+  <br>
   <div>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
+    <%= form.input :body %>
   </div>
-  <div>
-    <%= form.label :status %><br>
-    <%= form.select :status, %w[public private archived], selected: 'public' %>
-  </div>
-  <div>
-    <%= form.submit %>
-  </div>
+  <br>
+  <%= form.input :status, :collection => %w[public private archived], selected: 'public' %><br>
+  <%= form.button :submit, "Submit" %><br>
 <% end %>
