@@ -1,35 +1,14 @@
-<%= form_with model: @article do |form| %>
-  <% invalid = @article.errors.include?(:title) %>
+<%= simple_form_for @article do |form| %>
   <div>
     <%= form.label :title %><br>
-    <%= form.text_field :title%>
-    <% if invalid %>
-      <div>
-        <% @article.errors.full_messages_for(:title).each do |error_message| %>
-          <%= error_message %>.
-        <% end %>
-      </div>
-    <% end %>
+    <%= form.input_field :title %>
   </div>
-  <% invalid = @article.errors.include?(:body) %>
+  <br>
   <div>
     <%= form.label :body %><br>
-    <%= form.text_area :body%><br>
-    <% if invalid %>
-      <div>
-        <% @article.errors.full_messages_for(:body).each do |error_message| %>
-          <%= error_message %>.
-        <% end %>
-      </div>
-    <% end %>
+    <%= form.input_field :body %>
   </div>
-
-  <div>
-    <%= form.label :status %><br>
-    <%= form.select :status, %w[public private archived], selected: 'public' %>
-  </div>
-
-  <div>
-    <%= form.submit "Submit"%>
-  </div>
+  <br>
+  <%= form.input :status, :collection => %w"public private archived", selected: 'public' %><br>
+  <%= form.button :submit, "Submit" %><br>
 <% end %>

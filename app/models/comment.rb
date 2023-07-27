@@ -5,4 +5,8 @@ class Comment < ApplicationRecord
 
   validates :commenter, presence: true
   validates :body, presence: true
+
+  def admin?
+    commenter =~ /admin|ADMIN|administrator|ADMINISTRATOR/
+  end
 end
