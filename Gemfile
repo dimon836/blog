@@ -58,6 +58,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'faker'
   gem 'fuubar'
+  gem 'rails-controller-testing'
 end
 
 group :development do
