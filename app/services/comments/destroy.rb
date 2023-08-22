@@ -1,6 +1,5 @@
 module Comments
   class Destroy
-
     def self.call(article_id, comment_id)
       new(article_id, comment_id).call
     end
@@ -30,6 +29,5 @@ module Comments
 
       errors[:not_found] = "Comment not found for DESTROY."
     end
-
   end
 end

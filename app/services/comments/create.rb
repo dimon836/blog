@@ -1,6 +1,5 @@
 module Comments
   class Create
-
     def self.call(params)
       new(params).call
     end
@@ -16,6 +15,5 @@ module Comments
     def initialize(params)
       @params = params
     end
-
   end
 end

@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  include ExceptionHandler
 
   http_basic_authenticate_with name: "dhh", password: "secret",
                                except: [:index, :show]
@@ -32,7 +33,7 @@ class ArticlesController < ApplicationController
     if Articles::Update.call(@article, article_params)
       redirect_to @article, status: :found
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

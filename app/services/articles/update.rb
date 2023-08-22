@@ -1,6 +1,5 @@
 module Articles
   class Update
-
     def self.call(article, params)
       new(article, params).call
     end
@@ -17,6 +16,5 @@ module Articles
       @article = article
       @params = params
     end
-
   end
 end

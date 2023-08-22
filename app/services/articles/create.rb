@@ -1,6 +1,5 @@
 module Articles
   class Create
-
     def self.call(params)
       new(params).call
     end
@@ -16,6 +15,5 @@ module Articles
     def initialize(params)
       @params = params
     end
-
   end
 end
