@@ -1,18 +1,18 @@
 <% unless comment.archived? %>
   <p>
-    <strong>Commenter:</strong>
+    <strong><%= t('comment.commenter') %></strong>
     <%= comment.commenter %>
   </p>
 
   <p>
-    <strong>Comment:</strong>
+    <strong><%= t('comment.self') %></strong>
     <%= comment.body %>
   </p>
 
   <p>
-    <%= link_to "Destroy Comment", [comment.article, comment], data: {
+    <%= link_to t('actions.delete'), [comment.article, comment], data: {
       turbo_method: :delete,
-      turbo_confirm: "Are you sure?"
+      turbo_confirm: t('form_confirmation')
     } %>
   </p>
 <% end %>

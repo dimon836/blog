@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.shared_examples 'credentials checker' do
-  let(:invalid_credentials) { ActionController::HttpAuthentication::Basic.encode_credentials("user", "pass") }
+  let(:invalid_credentials) { ActionController::HttpAuthentication::Basic.encode_credentials('user', 'pass') }
 
   before { request.headers['Authorization'] = invalid_credentials }
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Articles
   class Update
     def self.call(article, params)

@@ -1,28 +1,30 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :comment do
     commenter { Faker::Name.name }
     body { Faker::Lorem.sentence }
 
-    association :article
+    article
 
     transient do
-      status { 'public' }
+      status { :published }
     end
 
     after(:build) do |comment, evaluator|
       comment.status = evaluator.status if evaluator.status.present?
     end
 
-    trait :public do
-      status { 'public' }
+    trait :published do
+      status { :published }
     end
 
-    trait :private do
-      status { 'private' }
+    trait :hidden do
+      status { :hidden }
     end
 
     trait :archived do
-      status { 'archived' }
+      status { :archived }
     end
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Comments
   class Create
     def self.call(params)

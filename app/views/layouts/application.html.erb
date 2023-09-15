@@ -11,6 +11,12 @@
   </head>
 
   <body>
+    <%= link_to t('eng'), { :locale=>'en' } %>
+    <%= link_to t('ukr'), { :locale=>'ua' } %>
+    <%= render 'shared/flash_messages' %>
+    <br>
     <%= yield %>
+    <br>
+    <%= link_to t('routes.articles'), articles_path %>
   </body>
 </html>

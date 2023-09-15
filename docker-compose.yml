@@ -1,0 +1,40 @@
+version: '3.7'
+services:
+  db:
+    container_name: db
+    image: 'postgres:14.9-bullseye'
+    volumes:
+      - data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypass
+      POSTGRES_DB: flatiron_mod3_production
+    ports:
+      - '5432:5432'
+  blog:
+    container_name: blog
+    image: blog
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bundle exec rails s -b 0.0.0.0
+    environment:
+      RUBYOPT: '-W:no-deprecated -W:no-experimental'
+      RAILS_ENV: development
+      DB_HOST: db
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+    volumes:
+      - .:/blog
+      - bundle_bin:/bundle
+      - gem_cache:/usr/local/bundle/gems
+    tty: true
+    stdin_open: true
+
+volumes:
+  data:
+    driver: local
+  bundle_bin:
+  gem_cache:
