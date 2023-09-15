@@ -1,0 +1,23 @@
+ua:
+  simple_form:
+    labels:
+      article:
+        title: 'Назва статті'
+        body: 'Тіло сттаті'
+      comment:
+        commenter: 'Коментуючий'
+        body: 'Тіло коментаря'
+    placeholders:
+      article:
+        title: 'Введіть назву статті'
+        body: 'Введіть тіло сттаті'
+      comment:
+        commenter: "Ваше ім'я"
+        body: 'Напишіть свій коментар'
+  helpers:
+    submit:
+      article:
+        create: 'Опублікувати статтю'
+        update: 'Оновити статтю'
+      comment:
+        create: 'Додати коментар'

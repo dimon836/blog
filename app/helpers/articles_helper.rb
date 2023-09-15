@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ArticlesHelper
   def devise_error_messages!
     return '' if resource.errors.empty?
@@ -10,6 +12,6 @@ module ArticlesHelper
     </div>
     HTML
 
-    html.html_safe
+    safe_join(html)
   end
 end

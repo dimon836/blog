@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe ArticlesController, type: :controller do
+RSpec.describe ArticlesController do
   describe 'GET #index' do
     let!(:articles) { create_list(:article, 3) }
 
@@ -41,23 +43,23 @@ RSpec.describe ArticlesController, type: :controller do
     let(:params) do
       {
         article: {
-          title: title,
-          body: "some example body",
-          status: "public"
+          title:,
+          body: 'some example body',
+          status: Article.statuses.keys.first
         }
       }
     end
 
-    let(:title) { "article title" }
+    let(:title) { 'article title' }
 
     context 'when valid credentials' do
-      include_context 'valid credentials'
+      include_context 'when valid credentials'
 
       let(:article_attributes) do
         assigns(:article).attributes.deep_symbolize_keys.except(:id, :created_at, :updated_at)
       end
 
-      before { post :create, params: params }
+      before { post :create, params: }
 
       shared_examples 'article assigner' do
         it 'assigns article' do
@@ -78,7 +80,7 @@ RSpec.describe ArticlesController, type: :controller do
       end
 
       context 'when errors' do
-        let(:title) { "" }
+        let(:title) { '' }
 
         it 'returns http unprocessable_entity' do
           expect(response).to have_http_status(:unprocessable_entity)
@@ -94,7 +96,7 @@ RSpec.describe ArticlesController, type: :controller do
 
     context 'when invalid credentials' do
       it_behaves_like 'credentials checker' do
-        before { post :create, params: params }
+        before { post :create, params: }
       end
     end
   end
@@ -104,20 +106,20 @@ RSpec.describe ArticlesController, type: :controller do
       {
         id: article.id,
         article: {
-          title: title,
-          body: "some example body",
-          status: "public"
+          title:,
+          body: 'some example body',
+          status: Article.statuses.keys.first
         }
       }
     end
 
-    let(:title) { "article title" }
+    let(:title) { 'article title' }
     let(:article) { create(:article) }
 
     context 'when valid credentials' do
-      include_context 'valid credentials'
+      include_context 'when valid credentials'
 
-      before { put :update, params: params }
+      before { put :update, params: }
 
       shared_examples 'article updater' do
         it 'assigns article' do
@@ -125,7 +127,8 @@ RSpec.describe ArticlesController, type: :controller do
         end
 
         it 'has valid data' do
-          expect(assigns(:article).attributes.deep_symbolize_keys.except(:id, :created_at, :updated_at)).to eq(params[:article])
+          expect(assigns(:article).attributes.deep_symbolize_keys.except(:id, :created_at,
+                                                                         :updated_at)).to eq(params[:article])
         end
       end
 
@@ -142,7 +145,7 @@ RSpec.describe ArticlesController, type: :controller do
       end
 
       context 'when errors' do
-        let(:title) { "" }
+        let(:title) { '' }
 
         it 'returns http unprocessable_entity' do
           expect(response).to have_http_status(:unprocessable_entity)
@@ -158,7 +161,7 @@ RSpec.describe ArticlesController, type: :controller do
 
     context 'when invalid credentials' do
       it_behaves_like 'credentials checker' do
-        before { put :update, params: params }
+        before { put :update, params: }
       end
     end
   end
@@ -168,30 +171,26 @@ RSpec.describe ArticlesController, type: :controller do
     let!(:article) { create(:article) }
 
     context 'with valid credentials' do
-      include_context 'valid credentials'
+      include_context 'when valid credentials'
 
       shared_examples 'redirects articles' do
         it 'redirects to the articles' do
-          expect(response).to redirect_to(root_path)
+          expect(response).to redirect_to(articles_path)
         end
       end
 
       context 'when success' do
         context 'when deletes in test' do
           it 'deletes an article' do
-            expect { delete :destroy, params: params }.to change(Article, :count).by(-1)
+            expect { delete :destroy, params: }.to change(Article, :count).by(-1)
           end
         end
 
         context 'when deletes in before' do
-          before { delete :destroy, params: params }
+          before { delete :destroy, params: }
 
           it 'returns http found' do
             expect(response).to have_http_status(:found)
-          end
-
-          it 'redirects to the articles' do
-            expect(response).to redirect_to(root_path)
           end
 
           it_behaves_like 'redirects articles'
@@ -203,12 +202,12 @@ RSpec.describe ArticlesController, type: :controller do
 
         context 'when deletes in test' do
           it 'not deletes an article' do
-            expect { delete :destroy, params: params }.not_to change(Article, :count)
+            expect { delete :destroy, params: }.not_to change(Article, :count)
           end
         end
 
         context 'when deletes in before' do
-          before { delete :destroy, params: params }
+          before { delete :destroy, params: }
 
           it 'returns http see_other' do
             expect(response).to have_http_status(:see_other)
@@ -221,7 +220,7 @@ RSpec.describe ArticlesController, type: :controller do
 
     context 'with invalid credentials' do
       it_behaves_like 'credentials checker' do
-        before { delete :destroy, params: params }
+        before { delete :destroy, params: }
       end
     end
   end

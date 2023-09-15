@@ -7,6 +7,14 @@
     <%= form.input :body %>
   </div>
   <br>
-  <%= form.input :status, :collection => %w[public private archived], selected: 'public' %><br>
-  <%= form.button :submit, "Submit" %><br>
+  <div>
+    <%= form.input :status, label: t('comment.form.status'),
+                   collection: {
+                     t('article.form.statuses.pub') => 'published',
+                     t('article.form.statuses.hidden') => 'hidden',
+                     t('article.form.statuses.archived') => 'archived',
+                   },
+                   selected: :public %>
+  </div>
+  <%= form.button :submit %><br>
 <% end %>

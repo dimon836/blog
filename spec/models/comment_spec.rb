@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe Comment, type: :model do
+RSpec.describe Comment do
   subject(:comment) { create(:comment) }
 
   describe 'validations' do
@@ -9,8 +11,6 @@ RSpec.describe Comment, type: :model do
     it { is_expected.to validate_presence_of(:commenter) }
 
     it { is_expected.to validate_presence_of(:body) }
-
-    it { is_expected.to validate_inclusion_of(:status).in_array(%w[public private archived]) }
   end
 
   describe 'associations' do
@@ -19,5 +19,9 @@ RSpec.describe Comment, type: :model do
 
   describe 'indexes' do
     it { is_expected.to have_db_index(:article_id) }
+  end
+
+  describe 'enums' do
+    it { is_expected.to define_enum_for(:status).with_values(published: 1, hidden: 2, archived: 3) }
   end
 end

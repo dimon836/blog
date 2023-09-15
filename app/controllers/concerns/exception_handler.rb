@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ExceptionHandler
   extend ActiveSupport::Concern
 
@@ -7,7 +9,8 @@ module ExceptionHandler
 
   private
 
-  def handle_not_found_exception(error)
-    redirect_to root_path, alert: error.message, status: :see_other
+  def handle_not_found_exception
+    I18n.locale = params[:locale]
+    redirect_to articles_path, alert: I18n.t('controllers.articles.destroy.flash'), status: :see_other
   end
 end

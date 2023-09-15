@@ -1,21 +1,24 @@
+# frozen_string_literal: true
+
 class ArticlesController < ApplicationController
   include ExceptionHandler
 
-  http_basic_authenticate_with name: "dhh", password: "secret",
-                               except: [:index, :show]
+  http_basic_authenticate_with name: 'dhh', password: 'secret',
+                               except: %i[index show]
 
-  before_action :article, only: [:show, :edit, :update, :destroy]
+  before_action :article, only: %i[show edit update destroy]
 
   def index
     @articles = Article.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @article = Article.new
   end
+
+  def edit; end
 
   def create
     @article = Articles::Create.call(article_params)
@@ -24,9 +27,6 @@ class ArticlesController < ApplicationController
     else
       redirect_to @article, status: :found
     end
-  end
-
-  def edit
   end
 
   def update
@@ -39,7 +39,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article.destroy
-    redirect_to root_path, status: :found
+    redirect_to articles_path, status: :found
   end
 
   private

@@ -1,0 +1,61 @@
+ua:
+  time:
+    formats:
+      short: 'Біля %Hої години'
+      long: 'Точний час: %H:%M:%S'
+  routes:
+    articles: 'Назад до статей'
+  article:
+    articles: 'Статті'
+    pluralization:
+      zero: 'Тут немає ніяких статей.'
+      one: 'Тут лише одна стаття.'
+      few: 'Тут %{count} статті.'
+      other: 'Тут %{count} статей.'
+    form:
+      status: 'Статус'
+      statuses:
+        pub: 'публічний'
+        hidden: 'приватний'
+        archived: 'архівований'
+  comment:
+    self: 'Коментар'
+    comments: 'Коментарі'
+    commenter: 'Коментуючий:'
+    form:
+      status: 'Статус'
+      statuses:
+        pub: 'публічний'
+        hidden: 'приватний'
+        archived: 'архівований'
+  actions:
+    add: 'Додати'
+    new: 'Нова'
+    create: 'Створити'
+    edit: 'Змінити'
+    delete: 'Видалити'
+  form_confirmation: 'Ви впевнені?'
+  controllers:
+    articles:
+      destroy:
+        flash: 'Статтю не знайдено для ВИДАЛЕННЯ.'
+    comments:
+      destroy:
+        flash: 'Коментар не знайдено для ВИДАЛЕННЯ.'
+  activerecord:
+    attributes:
+      article:
+        title: 'Назва статті'
+        body: 'Тіло статті'
+      comment:
+        commenter: 'Коментатор'
+        body: 'Коментарій'
+    errors:
+      models:
+        article:
+          attributes:
+            title:
+              blank: 'не може бути пустою'
+            body:
+              blank: 'не може бути пустим'
+              too_short: 'замаленьке, мінімум 10 символів'
