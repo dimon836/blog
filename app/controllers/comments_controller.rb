@@ -3,13 +3,32 @@
 class CommentsController < ApplicationController
   http_basic_authenticate_with name: 'dhh', password: 'secret'
 
+  before_action :comment, only: %i[edit update]
+
+  def edit; end
+
   def create
     @comment = Comments::Create.call(comment_params)
-    @article = @comment.article
-    if @comment.errors.any?
-      render 'articles/show', status: :unprocessable_entity
-    else
-      redirect_to @comment.article, status: :see_other
+
+    respond_to do |format|
+      if @comment.errors.any?
+        @article = @comment.article
+        format_error_response(format, 'articles/show', nil, :unprocessable_entity)
+      else
+        format_success_response(format, I18n.t('controllers.comments.created'), @comment.article, :see_other)
+      end
+    end
+  end
+
+  def update
+    @comment = Comments::Update.call(@comment, comment_params)
+
+    respond_to do |format|
+      if @comment.errors.any?
+        format_error_response(format, :edit, :update, :unprocessable_entity)
+      else
+        format_success_response(format, I18n.t('controllers.comments.updated'), @comment.article, :found)
+      end
     end
   end
 
@@ -30,5 +49,18 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:commenter, :body, :status).merge(article_id: params[:article_id])
+  end
+
+  def comment
+    @comment = Comment.find(params[:id])
+  end
+
+  def format_success_response(format, notice_message, article, status)
+    format.html { redirect_to article, flash: { updated_comment: notice_message }, status: }
+  end
+
+  def format_error_response(format, render_html, render_turbo_stream, status)
+    format.html { render render_html, status: }
+    format.turbo_stream { render render_turbo_stream, status: } unless render_turbo_stream.nil?
   end
 end

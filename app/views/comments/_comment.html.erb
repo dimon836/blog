@@ -1,18 +1,59 @@
-<% unless comment.archived? %>
-  <p>
-    <strong><%= t('comment.commenter') %></strong>
-    <%= comment.commenter %>
-  </p>
-
-  <p>
-    <strong><%= t('comment.self') %></strong>
-    <%= comment.body %>
-  </p>
-
-  <p>
-    <%= link_to t('actions.delete'), [comment.article, comment], data: {
-      turbo_method: :delete,
-      turbo_confirm: t('form_confirmation')
-    } %>
-  </p>
-<% end %>
+<div class="card-body p-4">
+  <turbo-frame id="<%= dom_id comment %>">
+    <% unless flash[:updated_comment].nil? %>
+      <div class="container">
+        <div class="alert alert-notice alert-dismissible fade show" role="alert">
+          <%= flash[:updated_comment] %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+    <% end %>
+    <div class="row">
+      <div class="col">
+        <div class="d-flex flex-start">
+          <img class="rounded-circle shadow-1-strong me-3"
+               src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar" width="65"
+               height="65"/>
+          <div class="flex-grow-1 flex-shrink-1">
+            <div>
+              <div class="d-flex justify-content-between align-items-center">
+                <p class="mb-1">
+                  <%= comment.commenter %>
+                  <span class="small">
+                    <%= comment_date(comment) %></span>
+                </p>
+                <div class="dropdown show">
+                  <a class="btn btn-primary btn-sm dropdown-toggle"
+                     href="#"
+                     role="button"
+                     id="dropdownMenuLink"
+                     data-bs-toggle="dropdown"
+                     aria-haspopup="true"
+                     aria-expanded="false">
+                    <%= t('actions.self') %>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <div class="dropdown-item">
+                      <%= link_to model_action('comment', 'edit'),
+                                  edit_article_comment_path(comment.article, comment),
+                                  class: "link-success link-underline link-underline-opacity-0" %>
+                    </div>
+                    <div class="dropdown-item">
+                      <%= link_to model_action('comment', 'delete'), { form_params: [comment.article, comment] }, data: {
+                        turbo_method: :delete,
+                        turbo_confirm: t('form_confirmation')
+                      }, class: "link-danger link-underline link-underline-opacity-0" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="small mb-0">
+                <%= comment.body %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </turbo-frame>
+</div>

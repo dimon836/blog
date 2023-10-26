@@ -9,10 +9,12 @@ class ArticlesController < ApplicationController
   before_action :article, only: %i[show edit update destroy]
 
   def index
-    @articles = Article.all
+    @articles = Article.active_articles
   end
 
-  def show; end
+  def show
+    @comment = Comment.new(article_id: @article.id)
+  end
 
   def new
     @article = Article.new
@@ -22,18 +24,25 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Articles::Create.call(article_params)
-    if @article.errors.any?
-      render :new, status: :unprocessable_entity
-    else
-      redirect_to @article, status: :found
+
+    respond_to do |format|
+      if @article.errors.any?
+        format_error_response(format, :new, :create, :unprocessable_entity)
+      else
+        format_success_response(format, I18n.t('controllers.articles.created'), :found)
+      end
     end
   end
 
   def update
-    if Articles::Update.call(@article, article_params)
-      redirect_to @article, status: :found
-    else
-      render :edit, status: :unprocessable_entity
+    @article = Articles::Update.call(@article, article_params)
+
+    respond_to do |format|
+      if @article.errors.any?
+        format_error_response(format, :show, :update, :unprocessable_entity)
+      else
+        format_success_response(format, I18n.t('controllers.articles.updated'), :found)
+      end
     end
   end
 
@@ -50,5 +59,14 @@ class ArticlesController < ApplicationController
 
   def article
     @article ||= Article.find(params[:id])
+  end
+
+  def format_success_response(format, notice_message, status)
+    format.html { redirect_to @article, notice: notice_message, status: }
+  end
+
+  def format_error_response(format, render_html, render_turbo_stream, status)
+    format.html { render render_html, status: }
+    format.turbo_stream { render render_turbo_stream, status: }
   end
 end

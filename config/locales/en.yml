@@ -1,11 +1,9 @@
 en:
-  time:
-    formats:
-      short: 'around %H'
-      long: 'Current time is: %H:%M:%S'
   routes:
     articles: 'Back to articles'
   article:
+    subjective_case: 'Article'
+    accusative_case: 'Article'
     articles: 'Articles'
     pluralization:
       zero: 'There is no article.'
@@ -18,9 +16,11 @@ en:
         hidden: 'private'
         archived: 'archived'
   comment:
-    self: 'Comment'
+    self: 'Comment:'
+    subjective_case: 'Comment'
+    accusative_case: 'Comment'
     comments: 'Comments'
-    commenter: 'Commenter'
+    commenter: 'Commenter:'
     form:
       status: 'Status'
       statuses:
@@ -28,17 +28,29 @@ en:
         hidden: 'private'
         archived: 'archived'
   actions:
-    add: 'Add'
-    new: 'New'
-    create: 'Create'
-    edit: 'Edit'
-    delete: 'Destroy'
+    self: 'Actions'
+    add:
+      present: 'Add'
+    new:
+      present: 'New'
+    create:
+      present: 'Create'
+      past: 'Created'
+    edit:
+      present: 'Edit'
+      past: 'Edited'
+    delete:
+      present: 'Destroy'
   form_confirmation: 'Are you sure?'
   controllers:
     articles:
+      created: 'Article was successfully created.'
+      updated: 'Article was successfully updated.'
       destroy:
         flash: 'Article not found for DESTROY.'
     comments:
+      created: 'Comment was successfully created.'
+      updated: 'Comment was successfully updated.'
       destroy:
         flash: 'Comment not found for DESTROY.'
   activerecord:
@@ -58,3 +70,18 @@ en:
             body:
               blank: "can't be blank"
               too_short: 'is too short, minimum 10'
+        comment:
+          attributes:
+            commenter:
+              blank: "can't be blank"
+            body:
+              blank: "can't be blank"
+  helpers:
+    submit:
+      article:
+        create: 'Publish Article'
+        update: 'Update Article'
+      comment:
+        create: 'Add a comment'
+        edit: 'Update comment'
+  ago: 'ago'

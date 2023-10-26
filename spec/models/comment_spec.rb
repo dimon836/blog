@@ -1,5 +1,17 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: comments
+#
+#  id         :bigint           not null, primary key
+#  commenter  :string
+#  body       :text
+#  article_id :bigint           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  status     :integer
+#
 require 'rails_helper'
 
 RSpec.describe Comment do
@@ -11,6 +23,8 @@ RSpec.describe Comment do
     it { is_expected.to validate_presence_of(:commenter) }
 
     it { is_expected.to validate_presence_of(:body) }
+
+    it { is_expected.to validate_presence_of(:status) }
   end
 
   describe 'associations' do

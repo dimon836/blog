@@ -21,3 +21,4 @@ en:
         update: 'Update Article'
       comment:
         create: 'Add a comment'
+        update: 'Change a comment'

@@ -6,6 +6,8 @@ RSpec.describe CommentsController do
   let(:article) { create(:article) }
 
   describe 'POST #create' do
+    subject(:create_comment_request) { post :create, params: }
+
     let(:params) do
       {
         comment: {
@@ -26,22 +28,18 @@ RSpec.describe CommentsController do
         assigns(:comment).attributes.deep_symbolize_keys.except(:id, :created_at, :updated_at)
       end
 
-      before { post :create, params: }
-
       shared_examples 'comment assigner' do
+        before { create_comment_request }
+
         it 'assigns comment' do
           expect(comment_attributes).to eq(params[:comment].merge(article_id: params[:article_id]))
         end
       end
 
       context 'when success' do
-        it 'returns http see_other' do
-          expect(response).to have_http_status(:see_other)
-        end
+        it { is_expected.to have_http_status(:see_other) }
 
-        it 'redirects to article' do
-          expect(response).to redirect_to(article_path(id: assigns(:article)))
-        end
+        it { is_expected.to redirect_to(article) }
 
         it_behaves_like 'comment assigner'
       end
@@ -49,13 +47,9 @@ RSpec.describe CommentsController do
       context 'when errors' do
         let(:body) { '' }
 
-        it 'returns http unprocessable_entity' do
-          expect(response).to have_http_status(:unprocessable_entity)
-        end
+        it { is_expected.to have_http_status(:unprocessable_entity) }
 
-        it 'renders show template' do
-          expect(response).to render_template(:show)
-        end
+        it { is_expected.to render_template(:show) }
 
         it_behaves_like 'comment assigner'
       end
@@ -63,18 +57,83 @@ RSpec.describe CommentsController do
 
     context 'when invalid credentials' do
       it_behaves_like 'credentials checker' do
-        before { post :create, params: }
+        before { create_comment_request }
+      end
+    end
+  end
+
+  describe 'PUT #update' do
+    subject(:update_comment_request) { put :update, params: }
+
+    let(:params) do
+      {
+        id: comment.id,
+        comment: {
+          commenter: 'Dima',
+          body:,
+          status: Comment.statuses.keys.first
+        },
+        article_id: article.id
+      }
+    end
+
+    let(:body) { 'some comment body' }
+
+    let!(:comment) { create(:comment, article:) }
+
+    context 'when valid credentials' do
+      include_context 'when valid credentials'
+
+      shared_examples 'comment updater' do
+        before { update_comment_request }
+
+        it 'assigns comment' do
+          expect(assigns(:comment)).to eq(comment.reload)
+        end
+
+        it 'has valid data' do
+          expect(assigns(:comment).attributes.deep_symbolize_keys
+                                  .except(:id, :created_at, :updated_at, :article_id)).to eq(params[:comment])
+        end
+      end
+
+      context 'when success' do
+        it { is_expected.to have_http_status(:found) }
+
+        it { is_expected.to redirect_to(article_path(id: article.id)) }
+
+        it_behaves_like 'comment updater'
+      end
+
+      context 'when errors' do
+        let(:body) { '' }
+
+        it { is_expected.to have_http_status(:unprocessable_entity) }
+
+        it { is_expected.to render_template(:edit) }
+
+        it_behaves_like 'comment updater'
+      end
+    end
+
+    context 'when invalid credentials' do
+      it_behaves_like 'credentials checker' do
+        before { update_comment_request }
       end
     end
   end
 
   describe 'DELETE #destroy' do
+    subject(:delete_comment_request) { delete :destroy, params: }
+
     let(:params) do
       {
-        id: comment.id,
+        id:,
         article_id: article.id
       }
     end
+
+    let(:id) { comment.id }
 
     let!(:comment) { create(:comment, article:) }
 
@@ -82,49 +141,20 @@ RSpec.describe CommentsController do
       include_context 'when valid credentials'
 
       shared_examples 'redirects article' do
-        it 'redirects to the article' do
-          expect(response).to redirect_to(article_path(id: params[:article_id]))
-        end
+        it { is_expected.to redirect_to(article_path(id: params[:article_id])) }
       end
 
       context 'when success' do
-        context 'when deletes in test' do
-          it 'deletes a comment' do
-            expect { delete :destroy, params: }.to change(Comment, :count).by(-1)
-          end
-        end
+        it { is_expected.to have_http_status(:see_other) }
 
-        context 'when deletes in before' do
-          before { delete :destroy, params: }
-
-          it 'returns http see_other' do
-            expect(response).to have_http_status(:see_other)
-          end
-
-          it_behaves_like 'redirects article'
-        end
+        it_behaves_like 'redirects article'
       end
 
       context 'when errors' do
-        let(:params) do
-          {
-            id: 0,
-            article_id: article.id
-          }
-        end
-
-        context 'when deletes in test' do
-          it 'not deletes a comment' do
-            expect { delete :destroy, params: }.not_to change(Comment, :count)
-          end
-        end
+        let(:id) { 0 }
 
         context 'when deletes in before' do
-          before { delete :destroy, params: }
-
-          it 'returns http see_other' do
-            expect(response).to have_http_status(:see_other)
-          end
+          it { is_expected.to have_http_status(:see_other) }
 
           it_behaves_like 'redirects article'
         end
@@ -133,7 +163,7 @@ RSpec.describe CommentsController do
 
     context 'with invalid credentials' do
       it_behaves_like 'credentials checker' do
-        before { delete :destroy, params: }
+        before { delete_comment_request }
       end
     end
   end

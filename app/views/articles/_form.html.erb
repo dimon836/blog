@@ -1,20 +1,19 @@
-<%= simple_form_for @article do |form| %>
-  <div>
+<div class="container">
+  <%= simple_form_for(@article) do |form| %>
     <%= form.input :title %>
-  </div>
-  <br>
-  <div>
-    <%= form.input :body %>
-  </div>
-  <br>
-  <div>
-    <%= form.input :status, label: t('article.form.status'),
+    <%= form.input :body, as: :text %>
+    <%= form.input :status,
+                   as: :select,
                    collection: {
                      t('article.form.statuses.pub') => 'published',
                      t('article.form.statuses.hidden') => 'hidden',
                      t('article.form.statuses.archived') => 'archived',
                    },
-                   selected: :published %>
-  </div>
-  <%= form.button :submit %><br>
-<% end %>
+                   label: t('article.form.status'),
+                   selected: 'published',
+                   disabled: @article.persisted? %>
+    <div class="py-3 d-flex justify-content-between">
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

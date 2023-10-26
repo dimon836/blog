@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Blog</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html lang="en">
+<head>
+  <title>Blog</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload", media: "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_importmap_tags %>
+</head>
 
-  <body>
-    <%= link_to t('eng'), { :locale=>'en' } %>
-    <%= link_to t('ukr'), { :locale=>'ua' } %>
-    <%= render 'shared/flash_messages' %>
-    <br>
-    <%= yield %>
-    <br>
-    <%= link_to t('routes.articles'), articles_path %>
-  </body>
+<body>
+<%= turbo_frame_tag 'modal', target: '_top' %>
+<%= turbo_frame_tag 'comment', target: '_top' %>
+<%= render 'shared/navigation' %>
+<%= render 'shared/flash_messages' %>
+<div class="container">
+  <%= yield %>
+</div>
+</body>
 </html>

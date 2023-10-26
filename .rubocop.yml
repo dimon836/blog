@@ -20,6 +20,8 @@ I18n/GetText:
   Enabled: false
 
 Rails/SkipsModelValidations:
+  Exclude:
+    - 'lib/tasks/change_status_type.rake'
   AllowedMethods:
     - insert_all
 
