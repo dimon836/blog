@@ -1,20 +1,25 @@
-<%= simple_form_for [@article, @article.comments.build] do |form| %>
-  <div>
-    <%= form.input :commenter %>
-  </div>
-  <br>
-  <div>
-    <%= form.input :body %>
-  </div>
-  <br>
-  <div>
-    <%= form.input :status, label: t('comment.form.status'),
-                   collection: {
-                     t('article.form.statuses.pub') => 'published',
-                     t('article.form.statuses.hidden') => 'hidden',
-                     t('article.form.statuses.archived') => 'archived',
-                   },
-                   selected: :public %>
-  </div>
-  <%= form.button :submit %><br>
-<% end %>
+<div class="container">
+  <%= simple_form_for([@comment.article, @comment]) do |form| %>
+    <div class="row">
+      <div class="col inline">
+        <%= form.input :commenter, disabled: @comment.persisted? %>
+      </div>
+      <div class="col inline">
+        <%= form.input :status,
+                       as: :select,
+                       collection: {
+                         t('article.form.statuses.pub') => 'published',
+                         t('article.form.statuses.hidden') => 'hidden',
+                         t('article.form.statuses.archived') => 'archived',
+                       },
+                       label: t('article.form.status'),
+                       selected: 'published',
+                       disabled: @comment.persisted? %>
+      </div>
+    </div>
+    <%= form.input :body, as: :text %>
+    <div class="py-3 d-flex justify-content-between">
+      <%= form.submit class: 'btn btn-primary btn-lg' %>
+    </div>
+  <% end %>
+</div>

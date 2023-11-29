@@ -1,17 +1,64 @@
-<h1><%= @article.title %></h1>
+<div class="d-flex justify-content-between align-items-center mt-4">
+  <h1><%= @article.title %></h1>
+  <div class="dropdown show">
+    <a class="btn btn-primary dropdown-toggle"
+       href="#"
+       role="button"
+       id="dropdownMenuLink"
+       data-bs-toggle="dropdown"
+       aria-haspopup="true"
+       aria-expanded="false">
+      <%= t('actions.self') %>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <div class="dropdown-item">
+        <%= link_to model_action('article', 'edit'),
+                    edit_article_path(@article),
+                    class: "link-success link-underline link-underline-opacity-0",
+                    data: { turbo_frame: 'modal' } %>
+      </div>
+      <div class="dropdown-item">
+        <%= link_to model_action('article', 'delete'), article_path(@article), data: {
+          turbo_method: :delete,
+          turbo_confirm: t('form_confirmation')
+        }, class: "link-danger link-underline link-underline-opacity-0" %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="vh-40">
+  <p><%= @article.body %></p>
+</div>
 
-<p><%= @article.body %></p>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-12 col-lg-10 col-xl-8">
+      <h2><%= t('comment.comments') %></h2>
+    </div>
+  </div>
+</div>
 
-<ul>
-  <li><%= link_to t('actions.edit'), edit_article_path(@article) %></li>
-  <li><%= link_to t('actions.delete'), article_path(@article), data: {
-    turbo_method: :delete,
-    turbo_confirm: t('form_confirmation')
-  } %></li>
-</ul>
+<div class="container py-3">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-12 col-lg-10 col-xl-8">
+      <div class="card">
+        <%= render @article.comments.non_archived_comments %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<h2><%= t('comment.comments') %></h2>
-<%= render @article.comments %>
-
-<h2><%= t('comment.comments') %></h2>
-<%= render 'comments/form' %>
+<div class="container mb-3">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-12 col-lg-10 col-xl-8">
+      <div class="card">
+        <div class="card-body p-4">
+          <div class="row">
+            <h2><%= model_action('comment', 'add') %></h2>
+            <%= render 'comments/form' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

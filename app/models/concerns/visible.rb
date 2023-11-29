@@ -4,10 +4,6 @@ module Visible
   extend ActiveSupport::Concern
 
   class_methods do
-    private
-
-    def published_count
-      published.count
-    end
+    delegate :count, to: :published, prefix: true
   end
 end

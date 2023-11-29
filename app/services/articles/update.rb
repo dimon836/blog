@@ -8,6 +8,7 @@ module Articles
 
     def call
       article.update(params)
+      article
     end
 
     attr_reader :article, :params

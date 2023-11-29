@@ -1,11 +1,9 @@
 ua:
-  time:
-    formats:
-      short: 'Біля %Hої години'
-      long: 'Точний час: %H:%M:%S'
   routes:
     articles: 'Назад до статей'
   article:
+    subjective_case: 'Стаття'
+    accusative_case: 'Статтю'
     articles: 'Статті'
     pluralization:
       zero: 'Тут немає ніяких статей.'
@@ -19,7 +17,9 @@ ua:
         hidden: 'приватний'
         archived: 'архівований'
   comment:
-    self: 'Коментар'
+    self: 'Коментар:'
+    subjective_case: 'Коментар'
+    accusative_case: 'Коментар'
     comments: 'Коментарі'
     commenter: 'Коментуючий:'
     form:
@@ -29,17 +29,29 @@ ua:
         hidden: 'приватний'
         archived: 'архівований'
   actions:
-    add: 'Додати'
-    new: 'Нова'
-    create: 'Створити'
-    edit: 'Змінити'
-    delete: 'Видалити'
+    self: 'Дії'
+    add:
+      present: 'Додати'
+    new:
+      present: 'Нова'
+    create:
+      present: 'Створити'
+      past: 'Створено'
+    edit:
+      present: 'Змінити'
+      past: 'Змінено'
+    delete:
+      present: 'Видалити'
   form_confirmation: 'Ви впевнені?'
   controllers:
     articles:
+      created: 'Стаття успішно створена.'
+      updated: 'Стаття успішно відредагована.'
       destroy:
         flash: 'Статтю не знайдено для ВИДАЛЕННЯ.'
     comments:
+      created: 'Коментар успішно створено.'
+      updated: 'Коментар успішно змінено.'
       destroy:
         flash: 'Коментар не знайдено для ВИДАЛЕННЯ.'
   activerecord:
@@ -59,3 +71,88 @@ ua:
             body:
               blank: 'не може бути пустим'
               too_short: 'замаленьке, мінімум 10 символів'
+        comment:
+          attributes:
+            commenter:
+              blank: 'не може бути пустим'
+            body:
+              blank: 'не може бути пустим'
+  helpers:
+    submit:
+      article:
+        create: 'Опублікувати статтю'
+        update: 'Оновити статтю'
+      comment:
+        create: 'Додати коментар'
+        edit: 'Змінити коментар'
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: близько %{count} години
+        few: близько %{count} годин
+        many: близько %{count} годин
+        other: близько %{count} години
+      about_x_months:
+        one: близько %{count} місяця
+        few: близько %{count} місяців
+        many: близько %{count} місяців
+        other: близько %{count} місяця
+      about_x_years:
+        one: близько %{count} року
+        few: близько %{count} років
+        many: близько %{count} років
+        other: близько %{count} року
+      almost_x_years:
+        one: майже %{count} рік
+        few: майже %{count} роки
+        many: майже %{count} років
+        other: майже %{count} років
+      half_a_minute: пів хвилини
+      less_than_x_seconds:
+        one: менше %{count} секунди
+        few: менше %{count} секунд
+        many: менше %{count} секунд
+        other: менше %{count} секунди
+      less_than_x_minutes:
+        one: менше %{count} хвилини
+        few: менше %{count} хвилин
+        many: менше %{count} хвилин
+        other: менше %{count} хвилини
+      over_x_years:
+        one: більше %{count} року
+        few: більше %{count} років
+        many: більше %{count} років
+        other: більше %{count} року
+      x_seconds:
+        one: "%{count} секунда"
+        few: "%{count} секунди"
+        many: "%{count} секунд"
+        other: "%{count} секунди"
+      x_minutes:
+        one: "%{count} хвилина"
+        few: "%{count} хвилини"
+        many: "%{count} хвилин"
+        other: "%{count} хвилини"
+      x_days:
+        one: "%{count} день"
+        few: "%{count} дні"
+        many: "%{count} днів"
+        other: "%{count} дня"
+      x_months:
+        one: "%{count} місяць"
+        few: "%{count} місяці"
+        many: "%{count} місяців"
+        other: "%{count} місяця"
+      x_years:
+        one: "%{count} рік"
+        few: "%{count} роки"
+        many: "%{count} років"
+        other: "%{count} року"
+    prompts:
+      second: Секунда
+      minute: Хвилина
+      hour: Година
+      day: День
+      month: Місяць
+      year: Рік
+  ago: 'тому'

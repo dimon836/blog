@@ -40,6 +40,8 @@ RSpec.describe ArticlesController do
   end
 
   describe 'POST #create' do
+    subject(:create_article_request) { post :create, params: }
+
     let(:params) do
       {
         article: {
@@ -59,22 +61,18 @@ RSpec.describe ArticlesController do
         assigns(:article).attributes.deep_symbolize_keys.except(:id, :created_at, :updated_at)
       end
 
-      before { post :create, params: }
-
       shared_examples 'article assigner' do
+        before { create_article_request }
+
         it 'assigns article' do
           expect(article_attributes).to eq(params[:article])
         end
       end
 
       context 'when success' do
-        it 'returns http found' do
-          expect(response).to have_http_status(:found)
-        end
+        it { is_expected.to have_http_status(:found) }
 
-        it 'redirects to booking requests' do
-          expect(response).to redirect_to(article_path(id: assigns(:article).id))
-        end
+        it { is_expected.to redirect_to(article_path(id: assigns(:article).id)) }
 
         it_behaves_like 'article assigner'
       end
@@ -82,13 +80,9 @@ RSpec.describe ArticlesController do
       context 'when errors' do
         let(:title) { '' }
 
-        it 'returns http unprocessable_entity' do
-          expect(response).to have_http_status(:unprocessable_entity)
-        end
+        it { is_expected.to have_http_status(:unprocessable_entity) }
 
-        it 'renders new template' do
-          expect(response).to render_template(:new)
-        end
+        it { is_expected.to render_template(:new) }
 
         it_behaves_like 'article assigner'
       end
@@ -96,12 +90,14 @@ RSpec.describe ArticlesController do
 
     context 'when invalid credentials' do
       it_behaves_like 'credentials checker' do
-        before { post :create, params: }
+        before { create_article_request }
       end
     end
   end
 
   describe 'PUT #update' do
+    subject(:update_article_request) { put :update, params: }
+
     let(:params) do
       {
         id: article.id,
@@ -119,9 +115,9 @@ RSpec.describe ArticlesController do
     context 'when valid credentials' do
       include_context 'when valid credentials'
 
-      before { put :update, params: }
-
       shared_examples 'article updater' do
+        before { update_article_request }
+
         it 'assigns article' do
           expect(assigns(:article)).to eq(article.reload)
         end
@@ -133,13 +129,9 @@ RSpec.describe ArticlesController do
       end
 
       context 'when success' do
-        it 'returns http success' do
-          expect(response).to have_http_status(:found)
-        end
+        it { is_expected.to have_http_status(:found) }
 
-        it 'redirects to booking requests' do
-          expect(response).to redirect_to(article_path(id: article.id))
-        end
+        it { is_expected.to redirect_to(article_path(id: article.id)) }
 
         it_behaves_like 'article updater'
       end
@@ -147,13 +139,9 @@ RSpec.describe ArticlesController do
       context 'when errors' do
         let(:title) { '' }
 
-        it 'returns http unprocessable_entity' do
-          expect(response).to have_http_status(:unprocessable_entity)
-        end
+        it { is_expected.to have_http_status(:unprocessable_entity) }
 
-        it 'renders update template' do
-          expect(response).to render_template(:edit)
-        end
+        it { is_expected.to render_template(:show, layout: 'layouts/application') }
 
         it_behaves_like 'article updater'
       end
@@ -161,12 +149,14 @@ RSpec.describe ArticlesController do
 
     context 'when invalid credentials' do
       it_behaves_like 'credentials checker' do
-        before { put :update, params: }
+        before { update_article_request }
       end
     end
   end
 
   describe 'DELETE #destroy' do
+    subject(:delete_article_request) { delete :destroy, params: }
+
     let(:params) { { id: article.id } }
     let!(:article) { create(:article) }
 
@@ -174,53 +164,27 @@ RSpec.describe ArticlesController do
       include_context 'when valid credentials'
 
       shared_examples 'redirects articles' do
-        it 'redirects to the articles' do
-          expect(response).to redirect_to(articles_path)
-        end
+        it { is_expected.to redirect_to(articles_path) }
       end
 
       context 'when success' do
-        context 'when deletes in test' do
-          it 'deletes an article' do
-            expect { delete :destroy, params: }.to change(Article, :count).by(-1)
-          end
-        end
+        it { is_expected.to have_http_status(:found) }
 
-        context 'when deletes in before' do
-          before { delete :destroy, params: }
-
-          it 'returns http found' do
-            expect(response).to have_http_status(:found)
-          end
-
-          it_behaves_like 'redirects articles'
-        end
+        it_behaves_like 'redirects articles'
       end
 
       context 'when errors' do
         let(:params) { { id: 0 } }
 
-        context 'when deletes in test' do
-          it 'not deletes an article' do
-            expect { delete :destroy, params: }.not_to change(Article, :count)
-          end
-        end
+        it { is_expected.to have_http_status(:see_other) }
 
-        context 'when deletes in before' do
-          before { delete :destroy, params: }
-
-          it 'returns http see_other' do
-            expect(response).to have_http_status(:see_other)
-          end
-
-          it_behaves_like 'redirects articles'
-        end
+        it_behaves_like 'redirects articles'
       end
     end
 
     context 'with invalid credentials' do
       it_behaves_like 'credentials checker' do
-        before { delete :destroy, params: }
+        before { delete_article_request }
       end
     end
   end

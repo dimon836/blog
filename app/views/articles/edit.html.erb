@@ -1,3 +1,9 @@
-<h1><%= t('actions.edit') %></h1>
-
-<%= render "form", article: @article %>
+<div class="container">
+  <div class="row p-5">
+    <div class="col-md-6 center">
+      <%= render 'shared/form_modal', title: model_action('article', 'edit'), class_name: '' do %>
+        <%= render 'articles/form', article: @article %>
+      <% end %>
+    </div>
+  </div>
+</div>
