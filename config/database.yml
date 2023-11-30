@@ -10,6 +10,10 @@ default: &default
 development:
   <<: *default
   database: flatiron_mod3_development
+  #username: mysite
+  #password:
+  #host: localhost
+  #port: 5432
 
 
 test:
@@ -19,4 +23,5 @@ test:
 
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: flatiron_mod3_production
