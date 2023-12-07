@@ -7,10 +7,9 @@ class ArticlesController < ApplicationController
                                except: %i[index show]
 
   before_action :article, only: %i[show edit update destroy]
+  before_action :articles, only: :index
 
-  def index
-    @articles = Article.active_articles
-  end
+  def index; end
 
   def show
     @comment = Comment.new(article_id: @article.id)
@@ -59,6 +58,10 @@ class ArticlesController < ApplicationController
 
   def article
     @article ||= Article.find(params[:id])
+  end
+
+  def articles
+    @articles ||= Article.active_articles
   end
 
   def format_success_response(format, notice_message, status)
