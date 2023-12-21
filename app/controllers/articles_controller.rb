@@ -3,8 +3,7 @@
 class ArticlesController < ApplicationController
   include ExceptionHandler
 
-  http_basic_authenticate_with name: 'dhh', password: 'secret',
-                               except: %i[index show]
+  before_action :authenticate_user!, except: %i[index show]
 
   before_action :article, only: %i[show edit update destroy]
   before_action :articles, only: :index
