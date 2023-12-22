@@ -1,10 +1,33 @@
-<nav class="navbar navbar-dark bg-dark">
-  <div class="container">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-2">
+  <div class="container-fluid">
     <%= link_to t('routes.articles'), articles_path, class: 'navbar-brand' %>
-    <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
-      <%= link_to t('eng'), { :locale => 'en' }, class: "btn btn-secondary #{ 'active' if locale == 'en' }" %>
-      <%= link_to t('ukr'), { :locale => 'ua' }, class: "btn btn-secondary #{ 'active' if locale == 'ua' }" %>
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="btn-group btn-group-toggle me-4" data-toggle="buttons">
+        <%= link_to t('eng'), { :locale => 'en' }, class: "btn btn-secondary #{ 'active' if locale == 'en' }" %>
+        <%= link_to t('ukr'), { :locale => 'ua' }, class: "btn btn-secondary #{ 'active' if locale == 'ua' }" %>
+      </div>
+      <% if user_signed_in? %>
+
+        <div class="nav-item dropdown">
+          <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/340px-Default_pfp.svg.png" alt="dropdown image" width="30px" class="img-responsive">
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <%= link_to 'Profile', edit_user_registration_path, class: 'dropdown-item' %>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <%= button_to 'Log Out', destroy_user_session_path, method: :delete, class: 'me-2 dropdown-item text-danger' %>
+            </li>
+          </ul>
+      <% else %>
+        <%= link_to 'Log In', new_user_session_path, class: 'link-underline link-underline-opacity-0 link-light' %>
+      <% end %>
+      </div>
     </div>
   </div>
 </nav>

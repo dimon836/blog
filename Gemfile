@@ -73,6 +73,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'annotate', '~> 3.1', '>= 3.1.1'
+  gem 'devise', '~> 4.9'
   gem 'i18n', '~> 1.14'
   gem 'kaminari'
   gem 'web-console'
