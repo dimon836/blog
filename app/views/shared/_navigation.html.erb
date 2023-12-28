@@ -1,10 +1,15 @@
 <nav class="navbar navbar-dark bg-dark">
   <div class="container">
     <%= link_to t('routes.articles'), articles_path, class: 'navbar-brand' %>
-    <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
       <%= link_to t('eng'), { :locale => 'en' }, class: "btn btn-secondary #{ 'active' if locale == 'en' }" %>
       <%= link_to t('ukr'), { :locale => 'ua' }, class: "btn btn-secondary #{ 'active' if locale == 'ua' }" %>
     </div>
+  </div>
+  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <% unless user_signed_in? %>
+      <%= link_to 'sign up', new_user_registration_path, class: 'btn btn-secondary' %>
+    <% end %>
   </div>
 </nav>
