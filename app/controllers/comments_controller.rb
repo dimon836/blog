@@ -3,7 +3,7 @@
 class CommentsController < ApplicationController
   http_basic_authenticate_with name: 'dhh', password: 'secret'
 
-  before_action :comment, only: %i[edit update]
+  before_action :authenticate_user!, only: %i[edit update]
 
   def edit; end
 
